@@ -1,0 +1,27 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "./pages/login.scss";
+@import "./pages/dashboard.scss";
+
+@import "./components/progress.scss";
+
+@import "./components/layout.scss";
+
+@import "./Base/mixins";
+@import "./Base/variables";
+
+@import "./animations/animations.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.report-style-class {
+  height: 80vh;
+}

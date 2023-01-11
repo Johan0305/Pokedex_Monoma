@@ -1,0 +1,19 @@
+.containerCarousel {
+  img {
+    width: 100% !important;
+    max-height: 450px;
+    object-fit: cover;
+  }
+}
+
+.carouselSlide {
+  background-color: rgb(0, 0, 0);
+  height: 100%;
+}
+.mantine-Carousel-indicator {
+  background-color: $primaryColorSemiWhite;
+}
+
+// .mantine-Carousel-control {
+//   background-color: aqua;
+// }

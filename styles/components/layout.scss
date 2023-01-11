@@ -1,0 +1,100 @@
+.containerGlobal {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  background-color: $primaryColorWhite;
+  .globalContent {
+    justify-content: center;
+    display: flex;
+    width: 90%;
+    .containerLayout {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 20%;
+      box-shadow: 0px 0px 10px 1px $primaryColorSemiWhite;
+      height: 91vh;
+      position: sticky;
+      top: 70px;
+    }
+  }
+
+  .navbar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1;
+    width: 100%;
+    height: 76px;
+    justify-content: space-around;
+    border-radius: 0px 0px 30% 30%;
+    border-bottom: 1px solid #fa0f1738;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    animation-name: parpadeo;
+    animation-iteration-count: infinite;
+    animation-duration: 1.5s;
+    animation-timing-function: linear;
+    background-color: $neutral;
+
+    .userDrop {
+      display: flex;
+      border-radius: 100px;
+      justify-content: space-between;
+      grid-column: 5;
+      justify-self: center;
+      margin-top: 10px;
+
+      .userPok {
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .user {
+        .userPreMenu {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          background-color: $primaryColorWhite;
+          border-radius: 20px;
+          padding: 0px 5px;
+        }
+      }
+
+      .buttonLayoutDropdown {
+        cursor: pointer;
+        color: $primaryColorRed;
+      }
+    }
+
+    figure {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      grid-column: 3;
+      justify-self: center;
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.pageDontAccess {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  .dontAccess {
+    font-weight: bold;
+    font-size: 30px;
+    color: $primaryColorRed;
+  }
+}
