@@ -19,7 +19,12 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Modal opened={opened} onClose={() => setOpened(false)} centered>
+      <Modal
+        opened={opened}
+        onClose={() => setOpened(false)}
+        centered
+        data-cy="pokemonCardModal"
+      >
         <div>
           <div className="flex relative flex-col">
             <div className={`ash h-64 w-full flex justify-center flex-col`}>
@@ -73,11 +78,15 @@ const Layout = ({ children }) => {
         <div className="globalContent bg-neutral-content h-full ">
           {children}
         </div>
-        <div className="navbar">
+        <div className="navbar" data-cy="layout">
           <figure onClick={() => router.push("/dashboard")}>
-            <img src="/assets/logo.png" alt="logo" />
+            <img
+              src="/assets/logo.png"
+              alt="logo"
+              data-cy="logoImgPokemonsMasters"
+            />
           </figure>
-          <div className="userDrop">
+          <div className="userDrop" data-cy="userMenuDrop">
             <div className="user">
               <Menu trigger="hover" openDelay={100} closeDelay={400}>
                 <Menu.Target>
@@ -94,13 +103,14 @@ const Layout = ({ children }) => {
                       className="buttonLayoutDropdown"
                       onClick={() => setOpened(true)}
                     >
-                      <button> View Profile</button>
+                      <button data-cy="userView"> View Profile</button>
                     </div>
                   </Menu.Item>
                   <Menu.Item>
                     <div
                       className="buttonLayoutDropdown"
                       onClick={() => logout()}
+                      data-cy="userLogOut"
                     >
                       <button>Log Out</button>
                     </div>

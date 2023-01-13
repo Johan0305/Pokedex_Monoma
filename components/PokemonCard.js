@@ -9,7 +9,7 @@ const PokemonCard = ({ pokeData }) => {
   return (
     <>
       <Modal opened={opened} onClose={() => setOpened(false)} centered>
-        <div>
+        <div data-cy="pokemonCardModal">
           <div className="flex relative flex-col">
             <div
               className={`${pokeData.types[0].type.name} h-64 w-full flex justify-center flex-col`}
@@ -95,6 +95,7 @@ const PokemonCard = ({ pokeData }) => {
       <div
         className="card w-96 shadow-xl justify-self-center hover:scale-110 cursor-pointer"
         onClick={() => setOpened(true)}
+        data-cy="pokemonCard"
       >
         <div
           className={`${pokeData.types[0].type.name} rounded-t-2xl border-amber-400 border-2`}
@@ -108,21 +109,28 @@ const PokemonCard = ({ pokeData }) => {
               }
               alt="Shoes"
               className="w-36 p-5"
+              data-cy="pokemonCardImg"
             />
           </figure>
           <div className="flex w-full justify-between px-5 pb-7">
-            <div className="text-white font-bold">{time.toDateString()}</div>
+            <div className="text-white font-bold" data-cy="dateToday">
+              {time.toDateString()}
+            </div>
             <div className="btn btn-xs">
-              <p>Weight: {pokeData.weight}</p>
+              <p data-cy="pokemonCardWight">Weight: {pokeData.weight}</p>
             </div>
           </div>
         </div>
         <div className="card-body">
-          <h2 className="card-title uppercase pb-5">{pokeData.name}</h2>
+          <h2 className="card-title uppercase pb-5" data-cy="pokemonCardName">
+            {pokeData.name}
+          </h2>
 
           <div className="card-actions justify-end">
             {pokeData.abilities.map(({ ability }) => (
-              <div className="badge badge-outline">#{ability.name}</div>
+              <div className="badge badge-outline" data-cy="pokemonCardAbility">
+                #{ability.name}
+              </div>
             ))}
           </div>
         </div>

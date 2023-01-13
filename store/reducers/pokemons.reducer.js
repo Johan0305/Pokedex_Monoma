@@ -35,7 +35,7 @@ export default pokemonsActions.reducer;
 export const getAllPokemons = (page) => async (dispatch) => {
   try {
     dispatch(loadingPokemons(true));
-    console.log(`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=10`);
+
     axios
       .get(`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=10`)
       .then((res) => {
@@ -55,7 +55,7 @@ export const getAllPokemons = (page) => async (dispatch) => {
 export const getFromPagination = (page) => async (dispatch) => {
   try {
     dispatch(loadingPokemons(true));
-    console.log(`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=10`);
+
     axios
       .get(`https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=10`)
       .then((res) => {

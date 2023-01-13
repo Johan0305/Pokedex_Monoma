@@ -10,6 +10,8 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [viewPassword, setViewPassword] = useState("password");
+
   const route = useRouter();
 
   useEffect(() => {
@@ -56,7 +58,7 @@ export default function Home() {
       if (localStorage.get("token") === null) {
         Toast.fire({
           icon: "error",
-          title: "Ha ocurrido un error, verifica tu usuario y contraseña",
+          title: "An error has occurred, verify your username and password",
         });
         setLoading(false);
       }
@@ -87,7 +89,7 @@ export default function Home() {
               <div className="w-full flex justify-center">
                 <div className="flex gap-16">
                   <figure>
-                    <img src="/assets/logo.png"></img>
+                    <img src="/assets/logo.png" data-cy="PokeImg-login"></img>
                   </figure>
                 </div>
               </div>
@@ -106,23 +108,49 @@ export default function Home() {
                         onChange={(e) => {
                           setEmail(e.target.value);
                         }}
+                        data-cy="email-login"
                       />
                     </label>
                     <label className="label flex flex-col w-full items-start">
                       <input
-                        type="password"
+                        type={viewPassword}
                         placeholder="Password"
                         className="input input-bordered input-warning w-full max-w-xs text-white"
                         onChange={(e) => {
                           setPassword(e.target.value);
                         }}
+                        data-cy="password-login"
                       />
                     </label>
+                  </div>
+                  <div className="flex justify-center items-center gap-5">
+                    <figure
+                      onClick={() => {
+                        viewPassword === "password"
+                          ? setViewPassword("text")
+                          : setViewPassword("password");
+                      }}
+                    >
+                      <img
+                        src={
+                          viewPassword === "password"
+                            ? "/assets/hiddenPassword.png"
+                            : "/assets/showPassword.png"
+                        }
+                        className={"w-10"}
+                      />
+                    </figure>
+                    <p className="text-white min-w-[150px]">
+                      {viewPassword === "password"
+                        ? "See Password"
+                        : "Hide Password"}
+                    </p>
                   </div>
 
                   <button
                     className="btn btn-outline btn-warning w-full"
                     type="submit"
+                    data-cy="button-login"
                   >
                     Log In
                   </button>

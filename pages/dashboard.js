@@ -1,4 +1,5 @@
 import localStorage from "localstorage-slim";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ContainerContent from "../components/containerContent";
@@ -11,9 +12,9 @@ const dashboard = () => {
   const pokemons = useSelector((state) => state.pokemons);
   const page = useSelector((state) => state.page);
   const dispatch = useDispatch();
+  const route = useRouter();
 
   useEffect(() => {
-    console.log(localStorage.get("token"));
     if (localStorage.get("token") === null) {
       route.push("/");
     }
@@ -30,7 +31,11 @@ const dashboard = () => {
                 ¡WELCOME TO YOUR POKEDEX!
               </h1>
               <figure>
-                <img src={"/assets/pokedex.png"} width={40} />
+                <img
+                  src={"/assets/pokedex.png"}
+                  width={40}
+                  data-cy="pokemongoImg"
+                />
               </figure>
             </div>
 
