@@ -3,3 +3,11 @@
   background-size: cover;
   background-repeat: round;
 }
+.loadingIndex {
+  img {
+    animation-name: spin8932;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    width: 25%;
+  }
+}

@@ -1,28 +1,84 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import Cookies from "js-cookie";
+import localStorage from "localstorage-slim";
+import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const route = useRouter();
 
   useEffect(() => {
-    if (Cookies.get("userDt")) {
+    if (localStorage.get("token") !== null) {
       route.push("/dashboard");
     }
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    route.push("/dashboard");
+    const { data } = await axios.post("/api/auth/login", {
+      email: email,
+      password: password,
+    });
+
+    if (!data.error) {
+      localStorage.set("token", data.token);
+    }
+
+    setLoading(true);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    setTimeout(() => {
+      if (localStorage.get("token") !== null) {
+        Toast.fire({
+          icon: "success",
+          title: "Signed in successfully",
+        });
+        setLoading(false);
+        route.push("/dashboard");
+      }
+
+      if (localStorage.get("token") === null) {
+        Toast.fire({
+          icon: "error",
+          title: "Ha ocurrido un error, verifica tu usuario y contraseña",
+        });
+        setLoading(false);
+      }
+    }, 1000);
   };
+
+  if (loading) {
+    return (
+      <div className="loadingIndex w-full h-screen bg-neutral flex justify-center items-center">
+        <div>
+          <figure className="max-w-full flex justify-center">
+            <img src={"/assets/pokeball.png"} />
+          </figure>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
       <Head>
-        <title title="true">¿Quién es ese pokemon?</title>
+        <title title="true">Pokemon Masters</title>
       </Head>
       <main className="mainIndex bg-primary fixed w-full z-10">
         <div className="container flex flex-col justify-center items-center h-screen w-full max-w-full">

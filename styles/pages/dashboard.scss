@@ -14,6 +14,96 @@
   background-color: $primaryColorSemiWhite;
 }
 
-// .mantine-Carousel-control {
-//   background-color: aqua;
-// }
+.bug,
+.poison,
+.special-defense {
+  background-color: #aedf78;
+}
+.water,
+.defense {
+  background-color: #43ccff;
+}
+
+.grass,
+.special-attack {
+  background-color: #00ca91;
+}
+
+.fire,
+.hp,
+.dragon,
+.ash {
+  background-color: #e95c4d;
+}
+
+.normal,
+.speed,
+.psychic,
+.rock {
+  background-color: #a5a5a5;
+}
+
+.attack,
+.electric {
+  background-color: rgb(194, 168, 23);
+}
+
+.ground,
+.fighting {
+  background-color: rgb(95, 55, 55);
+}
+
+.fairy {
+  background-color: rgb(74, 145, 173);
+}
+
+.ghost {
+  background-color: rgb(190, 167, 255);
+}
+
+.mantine-Paper-root,
+.mantine-Modal-modal,
+.mantine-rqmd87 {
+  padding: 0;
+}
+
+.mantine-UnstyledButton-root {
+  visibility: hidden;
+}
+
+.infoWhite {
+  border-radius: 30px 30px 0px 0px;
+  margin-top: -50px;
+  z-index: 1;
+  background-color: $primaryColorWhite;
+}
+
+.avatar {
+  div {
+    display: flex;
+  }
+}
+
+.stylePagination {
+  font-size: 23px;
+  padding: 0px 10px;
+  .previous,
+  .next {
+    background-color: $neutral;
+    min-width: 150px;
+    color: #ffff;
+    text-align: center;
+  }
+
+  li {
+    max-height: 30px;
+  }
+  .selected {
+    text-align: center;
+    background-color: $neutral;
+    color: #ffff;
+    min-width: 30px;
+    min-height: 30px;
+    border-radius: 50%;
+  }
+}

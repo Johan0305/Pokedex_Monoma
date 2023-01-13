@@ -7,7 +7,10 @@ const ContainerContent = ({ pageTitle, children }) => {
       <Head>
         <title>{pageTitle}</title>
       </Head>
-      <main className="container w-full px-8 " style={{ paddingTop: "100px" }}>
+      <main
+        className="container w-full px-8 h-full"
+        style={{ paddingTop: "100px" }}
+      >
         <div className="gap-10 flex flex-col h-full">{children}</div>
       </main>
     </>

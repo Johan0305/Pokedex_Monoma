@@ -60,3 +60,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+@keyframes spin8932 {
+  to {
+    transform: rotate(360deg);
+  }
+}
